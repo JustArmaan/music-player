@@ -1,4 +1,4 @@
-import { Book, Home, PersonStandingIcon, Play } from "lucide-react";
+import { Book, Home, PersonStandingIcon, Play, Music } from "lucide-react";
 
 import {
   Sidebar,
@@ -32,6 +32,11 @@ const items = [
     title: "Profile",
     url: "/profile",
     icon: PersonStandingIcon,
+  },
+  {
+    title: "Mp4 Upload",
+    url: "/mp4-upload",
+    icon: Music,
   },
 ];
 
