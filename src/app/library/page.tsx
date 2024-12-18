@@ -15,8 +15,6 @@ import {
   AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
 
-// should I be writing type infront?
-
 export default function Library() {
   const [musicData, setMusicData] = useState<Music[]>([]);
   const [loading, setLoading] = useState(true);
@@ -86,7 +84,7 @@ export default function Library() {
               <Button
                 variant="outline"
                 className="mt-2"
-                onClick={() => router.push(`/player?trackId=${song.trackId}`)} // hehe react native moment
+                onClick={() => router.push(`/player?trackId=${song.trackId}`)}
               >
                 Play
               </Button>

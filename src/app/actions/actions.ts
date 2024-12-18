@@ -233,7 +233,6 @@ export async function deleteTrack(trackId: number) {
   await db.delete(music).where(eq(music.trackId, trackId));
   await db.delete(tracks).where(eq(tracks.id, trackId));
 
-  // delete from s3
   const deleteObjectCommand = new DeleteObjectCommand({
     Bucket: process.env.AWS_BUCKET_NAME!,
     Key: results.url.split("/").pop(),
@@ -244,19 +243,19 @@ export async function deleteTrack(trackId: number) {
   return { success: results };
 }
 
-// export async function getTrackIds() {
-//   const session = await auth();
-//   if (!session) {
-//     throw new Error("not authenticated");
-//   }
-//   const trackIds = await db
-//     .select()
-//     .from(tracks)
-//     .where(eq(tracks.userId, session.user.id))
-//     .then((res) => res.map((track) => track.id));
+export async function getTrackIds() {
+  const session = await auth();
+  if (!session) {
+    throw new Error("not authenticated");
+  }
+  const trackIds = await db
+    .select()
+    .from(tracks)
+    .where(eq(tracks.userId, session.user.id))
+    .then((res) => res.map((track) => track.id));
 
-//   return trackIds;
-// }
+  return trackIds;
+}
 
 export async function updateMusicData(
   musicId: number,
@@ -306,7 +305,6 @@ export async function getMusicById(musicId: number) {
   }
 }
 
-// Bro this has to be awaited. omg
 export type TrackDataWithArtist = Awaited<
   ReturnType<typeof getTrackDataAndArtist>
 >;

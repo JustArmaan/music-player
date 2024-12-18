@@ -24,7 +24,7 @@ export default function YouTubeUploadForm() {
     e.preventDefault();
 
     if (!youtubeUrl || !title || !artist) {
-      setStatusMessage("Please fill in all required fields.");
+      setStatusMessage("Please fill in all required fields...");
       clearStatusMessage();
       return;
     }
